@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Financial Calculator</title>
+</head>
+<body>
+    <h1 class="calc_title">FINANCIAL CALCULATOR</h1>
+    <form id="calc_form" class="calc_container">
+        <input id="input_operator1" class="calc_input" type="text" name="number1" required />
+        <div id="operator_group" class="operator_group">
+            <label for="operator_plus"><input type="radio" name="operator" id="operator_plus" value="+" checked> + </label>
+            <label for="operator_minus"><input type="radio" name="operator" id="operator_minus" value="-"> - </label>
+        </div>
+        <input id="input_operator2" class="calc_input" type="text" name="number2" required />
+        <button id="get_result" class="calc_result-button">=</button>
+        <input id="input_result" class="calc_input" type="text" name="result" readonly/>
+    </form>
+
+
+<script src="./js/index.js"></script>
+</body>
+</html>
