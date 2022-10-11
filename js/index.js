@@ -147,7 +147,7 @@ const prettierValue = (val) => {
 }
 
 const checkValue = (val) => {
-    return !!val.match(/^\d+(\.|,)?\d*$/);
+    return !!val.match(/^\-?\d+(\.|,)?\d*$/);
 
 }
 

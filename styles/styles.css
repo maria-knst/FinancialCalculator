@@ -30,3 +30,8 @@
     width: 8%;
     height: 40px;
 }
+
+.footer{
+    padding: 0 24px;
+    text-align: end;
+}
