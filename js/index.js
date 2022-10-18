@@ -3,7 +3,11 @@ import BigNumber from "../node_modules/bignumber.js/bignumber.mjs";
 
 const prettierValue = (val) => {
     const re = /,/gi;
-    return val.replace(re, '.');
+    const re1 = /\s/gi;
+    let res = val.replace(re, '.');
+    res = res.replace(re1,'');
+    console.log(res)
+    return res;
 }
 
 const checkValue = (val) => {
@@ -11,12 +15,15 @@ const checkValue = (val) => {
 
 }
 
-
 const makeSixSignsAfterComma = (bigNumberObj) => {
-    const newBigNumberObj = bigNumberObj;
-    const newArrSize = bigNumberObj._f + 6;
-    newBigNumberObj._d = bigNumberObj._d.slice(0, newArrSize);
-    return newBigNumberObj;
+    console.log(bigNumberObj);
+    const numberOfDigits = bigNumberObj.c[0].toString().length + 6;
+    return bigNumberObj.precision(numberOfDigits);
+}
+
+
+const prerrierResult = (bigNumObj) => {
+    return bigNumObj.toString().replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1 ');
 }
 
 const operator1 = document.getElementById('input_operator1');
@@ -47,20 +54,20 @@ buttonGetRes.addEventListener('click', (ev) => {
 
         switch (action.value){
             case '+':
-                result.value = a.plus(b);
+                result.value = prerrierResult(a.plus(b));
                 break;
             case '-':
-                result.value = a.minus(b);
+                result.value = prerrierResult(a.minus(b));
                 break;
             case '*':
-                result.value = a.multipliedBy(b);
+                result.value = prerrierResult(makeSixSignsAfterComma(a.multipliedBy(b)));
                 break;
             case '/':
                 if(b == 0){
                     alert('Division by zero :3');
                     break;
                 }
-                result.value = a.dividedBy(b);
+                result.value =  prerrierResult(makeSixSignsAfterComma(a.dividedBy(b)));
                 break;
             default: break;
         }
