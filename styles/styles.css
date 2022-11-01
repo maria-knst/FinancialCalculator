@@ -10,7 +10,7 @@
 }
 
 .calc_container{
-    width: 80%;
+    width: 90%;
     margin: 50px auto;
     display: flex;
     justify-content: space-around;
@@ -18,9 +18,11 @@
 }
 
 .calc_input{
-    width: 20%;
+    font-size: 14px;
+    width: 14%;
     height: 40px;
 }
+
 
 .operator_group{
     display: flex;
@@ -28,7 +30,7 @@
 }
 
 .calc_result-button{
-    width: 8%;
+    width: 5%;
     height: 40px;
 }
 

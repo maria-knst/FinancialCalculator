@@ -1,32 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/styles.css" />
     <title>Financial Calculator</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1 class="calc_title">FINANCIAL CALCULATOR</h1>
     <form id="calc_form" class="calc_container">
-        <input id="input_operator1" class="calc_input" type="text" name="number1" required />
-        <div id="operator_group" class="operator_group">
-            <label for="operator_plus"><input type="radio" name="operator" id="operator_plus" value="+" checked> + </label>
-            <label for="operator_minus"><input type="radio" name="operator" id="operator_minus" value="-"> - </label>
-            <label for="operator_multipl"><input type="radio" name="operator" id="operator_multipl" value="*"> * </label>
-            <label for="operator_division"><input type="radio" name="operator" id="operator_division" value="/"> / </label>
+      <input
+        id="input_operator1"
+        class="calc_input"
+        type="text"
+        name="number1"
+        value="1"
+        required
+      />
+      <div id="operator_group1" class="operator_group">
+        <label for="operator_plus1"><input
+            type="radio"
+            name="operator1"
+            id="operator_plus1"
+            value="+"
+            checked
+          />
+          +
+        </label>
+        <label for="operator_minus1"
+          ><input type="radio" name="operator1" id="operator_minus1" value="-" />
+          -
+        </label>
+        <label for="operator_multipl1"
+          ><input
+            type="radio"
+            name="operator1"
+            id="operator_multipl1"
+            value="*"
+          />
+          *
+        </label>
+        <label for="operator_division1"
+          ><input
+            type="radio"
+            name="operator1"
+            id="operator_division1"
+            value="/"
+          />
+          /
+        </label>
+      </div>
+        (
+      <input
+        id="input_operator2"
+        class="calc_input"
+        type="text"
+        name="number2"
+        value="1"
+        required
+      />
+        <div id="operator_group2" class="operator_group">
+            <label for="operator_plus2"
+            ><input
+                    type="radio"
+                    name="operator2"
+                    id="operator_plus2"
+                    value="+"
+                    checked
+            />
+                +
+            </label>
+            <label for="operator_minus2"
+            ><input type="radio" name="operator2" id="operator_minus2" value="-" />
+                -
+            </label>
+            <label for="operator_multipl2"
+            ><input
+                    type="radio"
+                    name="operator2"
+                    id="operator_multipl2"
+                    value="*"
+            />
+                *
+            </label>
+            <label for="operator_division2"
+            ><input
+                    type="radio"
+                    name="operator2"
+                    id="operator_division2"
+                    value="/"
+            />
+                /
+            </label>
         </div>
-        <input id="input_operator2" class="calc_input" type="text" name="number2" required />
-        <button id="get_result" class="calc_result-button">=</button>
-        <input id="input_result" class="calc_input" type="text" name="result" readonly/>
+
+        <input
+                id="input_operator3"
+                class="calc_input"
+                type="text"
+                name="number1"
+                value="1"
+                required
+        />
+        )
+        <div id="operator_group3" class="operator_group">
+            <label for="operator_plus3"
+            ><input
+                    type="radio"
+                    name="operator3"
+                    id="operator_plus3"
+                    value="+"
+                    checked
+            />
+                +
+            </label>
+            <label for="operator_minus3"
+            ><input type="radio" name="operator3" id="operator_minus3" value="-" />
+                -
+            </label>
+            <label for="operator_multipl3"
+            ><input
+                    type="radio"
+                    name="operator3"
+                    id="operator_multipl3"
+                    value="*"
+            />
+                *
+            </label>
+            <label for="operator_division3"
+            ><input
+                    type="radio"
+                    name="operator3"
+                    id="operator_division3"
+                    value="/"
+            />
+                /
+            </label>
+        </div>
+        <input
+                id="input_operator4"
+                class="calc_input"
+                type="text"
+                name="number2"
+                value="1"
+                required
+        />
+
+
+      <button id="get_result" class="calc_result-button">=</button>
+      <input
+        id="input_result"
+        class="calc_input"
+        type="text"
+        name="result"
+        readonly
+      />
     </form>
     <footer class="footer">
-        <p>Константинова Мария Андреевна, 4 курс, 4 группа, 2022 (Шаг 1 + Шаг 2) </p>
+      <p>
+        Константинова Мария Андреевна, 4 курс, 4 группа, 2022 (Шаг 1 + Шаг 2)
+      </p>
     </footer>
 
-
-<script type="module" src="./js/index.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.1.0/bignumber.min.js"></script>
+    <script type="module" src="./js/index.js"></script>
+  </body>
 </html>
