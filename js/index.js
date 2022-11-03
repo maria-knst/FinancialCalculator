@@ -13,16 +13,15 @@ const checkValue = (val) => {
 
 }
 
-const makeSixSignsAfterComma = (bigNumberObj) => {
-    const numberOfDigits = bigNumberObj.c[0].toString().length + 6;
+const makeNSignsAfterComma = (bigNumberObj, n) => {
+    const numberOfDigits = bigNumberObj.c[0].toString().length + n;
     return bigNumberObj.precision(numberOfDigits);
 }
 
 const prerrierResult = (bigNumObj) => {
-    const res = makeSixSignsAfterComma(bigNumObj);
+    const res = makeNSignsAfterComma(bigNumObj, 6);
     return res.toString().replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1 ');
 }
-
 
 const checkValues = (arr) =>{
     return arr.filter((item)=> !checkValue(item));
@@ -86,7 +85,7 @@ const performOperation = (actionValue, f, s) => {
         default: break;
     }
 
-    console.log(res);
+    res = makeNSignsAfterComma(res, 10);
     return res;
 }
 
@@ -139,7 +138,6 @@ buttonGetRes.addEventListener('click', (ev) => {
 
 
         innerResult = performOperation(action2.value, b, c);
-        console.log('1',innerResult)
 
         if(getPriority(action1, action3)){
             innerResult = performOperation(action1.value, a, innerResult);
@@ -149,7 +147,6 @@ buttonGetRes.addEventListener('click', (ev) => {
             innerResult = performOperation(action3.value, innerResult, d);
             result.value = prerrierResult(performOperation(action1.value, a, innerResult));
         }
-
     }
 })
 
