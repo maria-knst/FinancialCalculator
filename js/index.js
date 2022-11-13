@@ -9,17 +9,19 @@ const prettierValue = (val) => {
 }
 
 const checkValue = (val) => {
-    return !!val.match(/^\-?\d+(\.|,)?\d*$/);
+    return !!val.match(/^\-?\d+(\.|,)?\d*$/) || !!val.match(/(\d{1}|\d{2}|\d{3})+(\s\d{3})+(\.\d+)*$/);
 
 }
 
 const makeNSignsAfterComma = (bigNumberObj, n) => {
     const numberOfDigits = bigNumberObj.c[0].toString().length + n;
+    BigNumber.config({ ROUNDING_MODE: BigNumber.ROUND_HALF_UP });
     return bigNumberObj.precision(numberOfDigits);
 }
 
-const prerrierResult = (bigNumObj) => {
-    const res = makeNSignsAfterComma(bigNumObj, 6);
+const prerrierResult = (bigNumObj, roundType) => {
+    let res;
+    res = makeNSignsAfterComma(bigNumObj, 6);
     return res.toString().replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1 ');
 }
 
@@ -97,9 +99,11 @@ const value4 = document.getElementById('input_operator4');
 const result = document.getElementById('input_result');
 const buttonGetRes = document.getElementById('get_result');
 
-const operators1 = document.querySelectorAll('input[name="operator1"]')
-const operators2 = document.querySelectorAll('input[name="operator2"]')
-const operators3 = document.querySelectorAll('input[name="operator3"]')
+const operators1 = document.querySelectorAll('input[name="operator1"]');
+const operators2 = document.querySelectorAll('input[name="operator2"]');
+const operators3 = document.querySelectorAll('input[name="operator3"]');
+
+const rounding = document.querySelectorAll('input[name="rounding"]');
 
 
 buttonGetRes.addEventListener('click', (ev) => {
@@ -136,17 +140,59 @@ buttonGetRes.addEventListener('click', (ev) => {
             }
         }
 
+        let round_;
+        for (const roundingType of rounding) {
+            if (roundingType.checked) {
+                round_ = roundingType;
+            }
+        }
 
         innerResult = performOperation(action2.value, b, c);
 
         if(getPriority(action1, action3)){
             innerResult = performOperation(action1.value, a, innerResult);
-            result.value = prerrierResult(performOperation(action3.value, innerResult, d));
+            result.value = prerrierResult(performOperation(action3.value, innerResult, d), round_.value);
         }
         else {
             innerResult = performOperation(action3.value, innerResult, d);
-            result.value = prerrierResult(performOperation(action1.value, a, innerResult));
+            result.value = prerrierResult(performOperation(action1.value, a, innerResult), round_.value);
         }
     }
+
+    document.getElementById('get_rounding-value').removeAttribute('disabled')
+
+})
+
+
+document.getElementById('get_rounding-value').addEventListener('click', (ev) => {
+    ev.preventDefault()
+    const r = new BigNumber(prettierValue(result.value))
+
+    let resultValue;
+    let roundType;
+
+    for (const roundType_ of rounding) {
+        if (roundType_.checked) {
+            roundType = roundType_;
+        }
+    }
+
+
+    switch (roundType.value){
+        case 'm':
+            resultValue = r.dp(0, BigNumber.ROUND_HALF_UP);
+            break;
+        case 'b':
+            resultValue = r.dp(0, BigNumber.ROUND_HALF_EVEN);
+            break;
+        case 't':
+            resultValue = r.decimalPlaces(0, 1);
+            break;
+        default:
+            resultValue = r.dp(0, BigNumber.ROUND_HALF_UP);
+            break;
+    }
+
+    document.getElementById('rounding-value').value = resultValue;
 })
 

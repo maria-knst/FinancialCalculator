@@ -34,6 +34,34 @@
     height: 40px;
 }
 
+
+.rounding_block{
+    width: 50%;
+    margin: 12px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.rounding_group{
+    width: 60%;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.rounding-label{
+    width: 90%;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+#rounding-value{
+    font-size: 14px;
+    height: 40px;
+}
+
 .footer{
     padding: 0 24px;
     text-align: end;

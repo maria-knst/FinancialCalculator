@@ -160,9 +160,36 @@
         readonly
       />
     </form>
+    <div class='rounding_block'>
+        <div id="rounding_group" class="rounding_group">
+            <label for="math_rounding"><input
+                    type="radio"
+                    name="rounding"
+                    id="math_rounding"
+                    value="m"
+                    checked
+            />
+                math
+            </label>
+            <label for="bank_rounding"
+            ><input type="radio" name="rounding" id="bank_rounding" value="b" />
+                bank
+            </label>
+            <label for="trunc_rounding"
+            ><input
+                    type="radio"
+                    name="rounding"
+                    id="trunc_rounding"
+                    value="t"
+            />
+                trunc
+            </label>
+        </div>
+        <div class="rounding-label"><label for="rounding-value"><button id="get_rounding-value" disabled>Rounding result:</button> </label><input id="rounding-value" type="text" readonly></div>
+    </div>
     <footer class="footer">
       <p>
-        Константинова Мария Андреевна, 4 курс, 4 группа, 2022 (Шаг 1 + Шаг 2)
+        Константинова Мария Андреевна, 4 курс, 4 группа, 2022
       </p>
     </footer>
 
