@@ -9,7 +9,7 @@ const prettierValue = (val) => {
 }
 
 const checkValue = (val) => {
-    return !!val.match(/^\-?\d+(\.|,)?\d*$/) || !!val.match(/(\d{1}|\d{2}|\d{3})+(\s\d{3})+(\.\d+)*$/);
+    return !!val.match(/^\-?\d+(\.|,)?\d*$/) || !!val.match(/^\-?(\d{1}|\d{2}|\d{3})+(\s\d{3})+((\.|\,)\d+)*$/);
 
 }
 
