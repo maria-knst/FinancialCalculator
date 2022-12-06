@@ -9,12 +9,6 @@ const prettierValue = (val) => {
 }
 
 const checkValue = (val) => {
-    if(!!val.match(/^\-?\d+(\.|,)?\d*$/)){
-        console.log("1");
-    }
-    if(!!val.match(/^\-?(\d{1}|\d{2}|\d{3})+(\s\d{3})+((\.|\,)\d+)*$/)){
-        console.log("2");
-    }
     return !!val.match(/^\-?\d+(\.|,)?\d*$/) || !!val.match(/^\-?(\d{1}|\d{2}|\d{3})+(\s\d{3})+((\.|\,)\d+)*$/);
 
 }
