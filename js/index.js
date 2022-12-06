@@ -9,17 +9,28 @@ const prettierValue = (val) => {
 }
 
 const checkValue = (val) => {
+    if(!!val.match(/^\-?\d+(\.|,)?\d*$/)){
+        console.log("1");
+    }
+    if(!!val.match(/^\-?(\d{1}|\d{2}|\d{3})+(\s\d{3})+((\.|\,)\d+)*$/)){
+        console.log("2");
+    }
     return !!val.match(/^\-?\d+(\.|,)?\d*$/) || !!val.match(/^\-?(\d{1}|\d{2}|\d{3})+(\s\d{3})+((\.|\,)\d+)*$/);
 
 }
 
 const makeNSignsAfterComma = (bigNumberObj, n) => {
-    const numberOfDigits = bigNumberObj.c[0].toString().length + n;
+    let numberOfDigits;
+    if(bigNumberObj.e >= 0){
+        numberOfDigits = bigNumberObj.c[0].toString().length + n;
+    }else {
+        numberOfDigits = n + bigNumberObj.e;
+    }
     BigNumber.config({ ROUNDING_MODE: BigNumber.ROUND_HALF_UP });
     return bigNumberObj.precision(numberOfDigits);
 }
 
-const prerrierResult = (bigNumObj, roundType) => {
+const prerrierResult = (bigNumObj) => {
     let res;
     res = makeNSignsAfterComma(bigNumObj, 6);
     return res.toString().replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1 ');
@@ -108,7 +119,6 @@ const rounding = document.querySelectorAll('input[name="rounding"]');
 
 buttonGetRes.addEventListener('click', (ev) => {
     ev.preventDefault();
-
     const check = checkValues([value1.value, value2.value, value3.value, value4.value]);
 
     if(check.length){
@@ -149,13 +159,14 @@ buttonGetRes.addEventListener('click', (ev) => {
 
         innerResult = performOperation(action2.value, b, c);
 
+
         if(getPriority(action1, action3)){
             innerResult = performOperation(action1.value, a, innerResult);
-            result.value = prerrierResult(performOperation(action3.value, innerResult, d), round_.value);
+            result.value = prerrierResult(performOperation(action3.value, innerResult, d));
         }
         else {
             innerResult = performOperation(action3.value, innerResult, d);
-            result.value = prerrierResult(performOperation(action1.value, a, innerResult), round_.value);
+            result.value = prerrierResult(performOperation(action1.value, a, innerResult));
         }
     }
 
